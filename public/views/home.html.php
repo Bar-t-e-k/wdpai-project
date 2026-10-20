@@ -4,30 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle) ?></title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Cichy Azyl</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Mapa żywa</a></li>
-                <li><a href="/places">Katalog miejsc</a></li>
-                <li><a href="/places/add">Dodaj strefę / Zmierz hałas</a></li>
-            </ul>
-        </nav>
+    <header class="site-header">
+        <div class="page header-inner">
+            <h1>Cichy Azyl</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Mapa żywa</a></li>
+                    <li><a href="/places">Katalog miejsc</a></li>
+                    <li><a href="/places/add">Dodaj strefę / Zmierz hałas</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section id="map-container">
+    <main class="page hero">
+        <section id="map-container" class="project-card">
             <h2>Mapa nasycenia sensorycznego</h2>
             <p>Aktywne strefy w mieście: <strong><?= (int)$activeZonesCount ?></strong> | Średni poziom hałasu: <strong><?= htmlspecialchars($avgCityNoise) ?></strong></p>
             <div id="osm-map-placeholder">
-                <!-- Podpięcie OpenStreetMap / Leaflet na kolejnych laboratoriach -->
                 <p>[Interaktywna Mapa OpenStreetMap]</p>
             </div>
         </section>
 
-        <aside>
+        <aside class="project-card">
             <h2>Podgląd wybranego miejsca</h2>
             <article>
                 <h3>Parkowa Altana Wyciszenia</h3>
@@ -44,7 +46,7 @@
         </aside>
     </main>
 
-    <footer>
+    <footer class="page">
         <p>&copy; 2026 Cichy Azyl – System monitorowania przebodźcowania.</p>
     </footer>
 </body>

@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle) ?></title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
-        <h1><?= htmlspecialchars($placeName) ?> (ID: <?= (int)$placeId ?>)</h1>
-        <nav>
-            <a href="/places">← Powrót do listy</a>
-        </nav>
+    <header class="site-header">
+        <div class="page header-inner">
+            <h1><?= htmlspecialchars($placeName) ?> (ID: <?= (int)$placeId ?>)</h1>
+            <nav>
+                <a href="/places">← Powrót do listy</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <article>
+    <main class="page">
+        <article class="project-card">
             <header>
                 <h2>Ogólny Indeks Sensoryczny: <?= htmlspecialchars($sensoryScore) ?></h2>
                 <p>Ostatnia weryfikacja społeczności: <time><?= htmlspecialchars($lastUpdated) ?></time></p>
@@ -39,18 +42,18 @@
 
             <section>
                 <h3>Opinie i zgłoszenia użytkowników</h3>
-                <article>
+                <article class="project-card" style="margin-top: var(--space-2);">
                     <header>
                         <h4>Użytkownik #402</h4>
                         <time datetime="2026-10-18">18 października 2026</time>
                     </header>
-                    <p>Mjsce jest niezwykle ciche. Świetne miejsce na ucieczkę od hałasu miejskiego.</p>
+                    <p>Miejsce jest niezwykle ciche. Świetne miejsce na ucieczkę od hałasu miejskiego.</p>
                 </article>
             </section>
         </article>
     </main>
 
-    <footer>
+    <footer class="page">
         <p>Aplikacja Cichy Azyl</p>
     </footer>
 </body>
