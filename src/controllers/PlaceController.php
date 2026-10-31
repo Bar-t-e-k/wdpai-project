@@ -67,6 +67,8 @@ final class PlaceController extends AppController
 
     public function add(): void
     {
+        $this->requireAuthentication();
+
         $this->render('add-place', [
             'pageTitle' => 'Dodaj Nowy Azyl / Zmierz Hałas',
             'maxAllowedNoise' => 55,

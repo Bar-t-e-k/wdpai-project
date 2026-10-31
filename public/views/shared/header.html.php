@@ -15,7 +15,12 @@
         </nav>
 
         <div style="display: flex; align-items: center; gap: var(--space-2);">
-            <a href="/places/add" class="btn-primary">+ Zarejestruj Nowy Obiekt</a>
+            <?php if (($_SESSION['authenticated'] ?? false) === true): ?>
+                <a href="/places/add" class="btn-primary">+ Zarejestruj Nowy Obiekt</a>
+                <a href="/logout">Wyloguj</a>
+            <?php else: ?>
+                <a href="/login" class="btn-primary">Zaloguj</a>
+            <?php endif; ?>
         </div>
     </div>
 </header>
