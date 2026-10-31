@@ -7,16 +7,10 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="page header-inner">
-            <h1><?= htmlspecialchars($placeName) ?> (ID: <?= (int)$placeId ?>)</h1>
-            <nav>
-                <a href="/places">← Powrót do listy</a>
-            </nav>
-        </div>
-    </header>
+    <?php include __DIR__ . '/shared/header.html.php'; ?>
 
     <main class="page">
+        <h1><?= htmlspecialchars($placeName) ?> (ID: <?= (int)$placeId ?>)</h1>
         <article class="project-card">
             <header>
                 <h2>Ogólny Indeks Sensoryczny: <?= htmlspecialchars($sensoryScore) ?></h2>

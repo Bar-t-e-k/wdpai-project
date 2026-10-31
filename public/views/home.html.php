@@ -7,34 +7,10 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="page header-inner">
-            <div class="logo-group">
-                <span style="color: var(--color-brand); font-size: 1.4rem;">📡</span>
-                <h1 class="logo-title">Radar Ciszy</h1>
-            </div>
-
-            <nav>
-                <ul>
-                    <li><a href="/" class="active">Eksploruj</a></li>
-                                        <li><a href="/places">Korytarze Ciszy</a></li>
-                    <li><a href="/about">O projekcie</a></li>
-                    <li><a href="/places/add">Decybelomierz Live</a></li>
-
-                    <li><a href="#">Moje Azyle</a></li>
-                </ul>
-            </nav>
-
-            <div style="display: flex; align-items: center; gap: var(--space-2);">
-                <span class="map-badge">
-                    <span style="color: var(--color-brand);">●</span> Warszawa Śródmieście: <strong>41 dB</strong>
-                </span>
-                <a href="/places/add" class="btn-primary">+ Zarejestruj Nowy Obiekt</a>
-            </div>
-        </div>
-    </header>
+    <?php include __DIR__ . '/shared/header.html.php'; ?>
 
     <main class="page dashboard-grid">
+
         <section class="map-view" id="map-container">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div class="map-badge">

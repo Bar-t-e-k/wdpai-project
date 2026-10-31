@@ -7,18 +7,21 @@ namespace App\Controller;
 final class DefaultController extends AppController
 {
         public function index(): void
-    {
-        $this->render('home', [
-            'pageTitle' => 'Moja aplikacja',
-        ]);
-    }
+        {
+            $this->render('home', [
+                'pageTitle' => 'Moja aplikacja',
+                'activePage' => 'home',
+            ]);
+        }
 
-    public function about(): void
-    {
-        $this->render('about', [
-            'pageTitle' => 'O projekcie — Radar Ciszy',
-        ]);
-    }
+        public function about(): void
+        {
+            $this->render('about', [
+                'pageTitle' => 'O projekcie — Radar Ciszy',
+                'activePage' => 'about',
+            ]);
+        }
+
 
     public function notFound(): void
 

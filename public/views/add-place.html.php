@@ -7,16 +7,10 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="page header-inner">
-            <h1>Zgłoś nową strefę / Przeprowadź pomiar live</h1>
-            <nav>
-                <a href="/">← Powrót na stronę główną</a>
-            </nav>
-        </div>
-    </header>
+    <?php include __DIR__ . '/shared/header.html.php'; ?>
 
     <main class="page hero">
+        <h1>Zgłoś nową strefę / Przeprowadź pomiar live</h1>
         <section class="project-card">
             <h2>Pomiar hałasu otoczenia (Web Audio API)</h2>
             <p>Dopuszczalna prosta norma dla cichej strefy: <strong><?= (int)$maxAllowedNoise ?> dB</strong></p>

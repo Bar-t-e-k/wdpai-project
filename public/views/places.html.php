@@ -7,16 +7,10 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="page header-inner">
-            <h1><?= htmlspecialchars($pageTitle) ?></h1>
-            <nav>
-                <a href="/">← Wróć do mapy</a>
-            </nav>
-        </div>
-    </header>
+    <?php include __DIR__ . '/shared/header.html.php'; ?>
 
     <main class="page">
+        <h1><?= htmlspecialchars($pageTitle) ?></h1>
         <section style="margin-bottom: var(--space-3);">
             <h2>Filtruj przestrzenie</h2>
             <form action="/places" method="GET">

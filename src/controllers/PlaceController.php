@@ -12,6 +12,7 @@ final class PlaceController extends AppController
             'pageTitle' => 'Cichy Azyl – Mapa Przestrzeni Sensorycznych',
             'activeZonesCount' => 14,
             'avgCityNoise' => '38 dB (Spokojnie)',
+            'activePage' => 'home',
         ]);
     }
 
@@ -41,12 +42,13 @@ final class PlaceController extends AppController
                 'noise' => '22 dB',
                 'light' => 'Regulowane punktowe',
                 'crowd' => 'Bardzo niski',
-            ]
+            ],
         ];
 
         $this->render('places', [
             'pageTitle' => 'Katalog Cichych Stref',
             'placesList' => $places,
+            'activePage' => 'places',
         ]);
     }
 
@@ -59,6 +61,7 @@ final class PlaceController extends AppController
             'noiseLevel' => 28,
             'sensoryScore' => 'A+ (Doskonałe)',
             'lastUpdated' => '10 min temu',
+            'activePage' => 'places',
         ]);
     }
 
@@ -67,6 +70,7 @@ final class PlaceController extends AppController
         $this->render('add-place', [
             'pageTitle' => 'Dodaj Nowy Azyl / Zmierz Hałas',
             'maxAllowedNoise' => 55,
+            'activePage' => 'add-place',
         ]);
     }
 }
