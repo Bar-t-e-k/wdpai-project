@@ -17,8 +17,10 @@
             <nav>
                 <ul>
                     <li><a href="/" class="active">Eksploruj</a></li>
-                    <li><a href="/places">Korytarze Ciszy</a></li>
+                                        <li><a href="/places">Korytarze Ciszy</a></li>
+                    <li><a href="/about">O projekcie</a></li>
                     <li><a href="/places/add">Decybelomierz Live</a></li>
+
                     <li><a href="#">Moje Azyle</a></li>
                 </ul>
             </nav>

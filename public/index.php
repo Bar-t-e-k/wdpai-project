@@ -10,8 +10,10 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $routing = new Routing();
 
-$routing->get('/', PlaceController::class, 'index');
+$routing->get('/', DefaultController::class, 'index');
+$routing->get('/about', DefaultController::class, 'about');
 $routing->get('/places', PlaceController::class, 'list');
+
 $routing->get('/places/add', PlaceController::class, 'add');
 $routing->get('/places/{id}', PlaceController::class, 'show');
 

@@ -6,14 +6,22 @@ namespace App\Controller;
 
 final class DefaultController extends AppController
 {
-    public function index(): void
+        public function index(): void
     {
         $this->render('home', [
             'pageTitle' => 'Moja aplikacja',
         ]);
     }
 
+    public function about(): void
+    {
+        $this->render('about', [
+            'pageTitle' => 'O projekcie — Radar Ciszy',
+        ]);
+    }
+
     public function notFound(): void
+
     {
         $this->render('not-found', [
             'pageTitle' => 'Nie znaleziono strony',
