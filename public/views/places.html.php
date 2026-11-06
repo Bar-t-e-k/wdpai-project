@@ -1,15 +1,4 @@
-<!doctype html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($pageTitle) ?></title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <?php include __DIR__ . '/shared/header.html.php'; ?>
-
-    <main class="page">
+<div class="page">
         <h1><?= htmlspecialchars($pageTitle) ?></h1>
         <section style="margin-bottom: var(--space-3);">
             <h2>Filtruj przestrzenie</h2>
@@ -62,10 +51,4 @@
                 <?php endforeach; ?>
             </div>
         </section>
-    </main>
-
-    <footer class="page">
-        <p>Cichy Azyl – Filtrowanie wielokryterialne dla komfortu psychicznego.</p>
-    </footer>
-</body>
-</html>
+</div>

@@ -1,16 +1,5 @@
-<!doctype html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($pageTitle ?? 'Radar Ciszy — O projekcie') ?></title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <?php include __DIR__ . '/shared/header.html.php'; ?>
-
-    <main class="page">
-        <section class="project-card" style="max-width: 800px; margin: var(--space-4) auto;">
+<div class="page">
+    <section class="project-card" style="max-width: 800px; margin: var(--space-4) auto;">
             <h1>O projekcie Radar Ciszy</h1>
             <p style="font-size: 1.1rem; color: var(--color-muted); margin-bottom: var(--space-3);">
                 Radar Ciszy to inicjatywa mająca na celu mapowanie oaz spokoju w zgiełku współczesnych miast. 
@@ -39,12 +28,5 @@
             <div style="margin-top: var(--space-4);">
                 <a href="/" class="btn-primary">Wróć do mapy</a>
             </div>
-        </section>
-    </main>
-
-    <footer class="page" style="border-top: 1px solid var(--color-border); margin-top: var(--space-4); padding-top: var(--space-2); color: var(--color-muted); font-size: 0.85rem; display: flex; justify-content: space-between;">
-        <p>&copy; 2026 Radar Ciszy — Cyfrowa mapa ukojenia i azyl akustycznych.</p>
-        <p>Karta Dobrego Wyciszenia | Standard Sensoryczny PK</p>
-    </footer>
-</body>
-</html>
+    </section>
+</div>

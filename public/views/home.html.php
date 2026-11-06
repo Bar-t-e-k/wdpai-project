@@ -1,15 +1,4 @@
-<!doctype html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($pageTitle ?? 'Radar Ciszy') ?></title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <?php include __DIR__ . '/shared/header.html.php'; ?>
-
-    <main class="page dashboard-grid">
+<div class="page dashboard-grid">
 
         <section class="map-view" id="map-container">
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -83,11 +72,4 @@
                 <a href="/places/add" class="btn-primary" style="margin-top: 0.5rem;">+ Zarejestruj Nowy Obiekt</a>
             </article>
         </aside>
-    </main>
-
-    <footer class="page" style="border-top: 1px solid var(--color-border); margin-top: var(--space-4); padding-top: var(--space-2); color: var(--color-muted); font-size: 0.85rem; display: flex; justify-content: space-between;">
-        <p>&copy; 2026 Radar Ciszy — Cyfrowa mapa ukojenia i azyl akustycznych.</p>
-        <p>Karta Dobrego Wyciszenia | Standard Sensoryczny PK</p>
-    </footer>
-</body>
-</html>
+</div>

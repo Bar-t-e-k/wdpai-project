@@ -1,15 +1,4 @@
-<!doctype html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($pageTitle) ?></title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <?php include __DIR__ . '/shared/header.html.php'; ?>
-
-    <main class="page hero">
+<div class="page hero">
         <h1>Zgłoś nową strefę / Przeprowadź pomiar live</h1>
         <section class="project-card">
             <h2>Pomiar hałasu otoczenia (Web Audio API)</h2>
@@ -46,10 +35,4 @@
                 <button type="submit">Zapisz zgłoszenie</button>
             </form>
         </section>
-    </main>
-
-    <footer class="page">
-        <p>Wszystkie pomiary są anonimowe i służą weryfikacji warunków otoczenia.</p>
-    </footer>
-</body>
-</html>
+</div>
