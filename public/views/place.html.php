@@ -1,15 +1,4 @@
-<!doctype html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($pageTitle) ?></title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <?php include __DIR__ . '/shared/header.html.php'; ?>
-
-    <main class="page">
+<div class="page">
         <h1><?= htmlspecialchars($placeName) ?> (ID: <?= (int)$placeId ?>)</h1>
         <article class="project-card">
             <header>
@@ -45,10 +34,4 @@
                 </article>
             </section>
         </article>
-    </main>
-
-    <footer class="page">
-        <p>Aplikacja Cichy Azyl</p>
-    </footer>
-</body>
-</html>
+</div>
