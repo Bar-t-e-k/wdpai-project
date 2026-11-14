@@ -1,26 +1,33 @@
-<div class="page">
-        <section class="project-card" style="max-width: 32rem; margin: var(--space-4) auto;">
+<section class="page auth-page">
+    <section class="auth-card project-card">
+        <header class="auth-heading">
+            <span class="auth-eyebrow">Witaj ponownie</span>
             <h1>Logowanie</h1>
-            <p style="color: var(--color-muted);">
-                Zaloguj się, aby przejść do panelu dodawania miejsc.
+            <p>Zaloguj się, aby odkrywać ciche miejsca i dodawać własne pomiary.</p>
+        </header>
+
+        <?php if ($error !== null): ?>
+            <p class="form-error" role="alert">
+                <span aria-hidden="true">!</span>
+                <?= htmlspecialchars($error) ?>
             </p>
+        <?php endif; ?>
 
-            <?php if ($error !== null): ?>
-                <p style="color: var(--color-danger);" role="alert">
-                    <?= htmlspecialchars($error) ?>
-                </p>
-            <?php endif; ?>
+        <form class="auth-form" action="/login" method="POST">
+            <label class="form-field" for="email">
+                <span class="form-label">Adres e-mail</span>
+                <input class="form-control" type="email" id="email" name="email" required autocomplete="email" placeholder="ty@przyklad.pl">
+            </label>
+            <label class="form-field" for="password">
+                <span class="form-label">Hasło</span>
+                <input class="form-control" type="password" id="password" name="password" required autocomplete="current-password" placeholder="Wpisz swoje hasło">
+            </label>
+            <button class="form-submit btn-primary" type="submit">Zaloguj się <span aria-hidden="true">→</span></button>
+        </form>
 
-            <form action="/login" method="POST">
-                <p>
-                    <label for="email">Adres e-mail:</label><br>
-                    <input type="email" id="email" name="email" required autocomplete="email" style="width: 100%;">
-                </p>
-                <p>
-                    <label for="password">Hasło:</label><br>
-                    <input type="password" id="password" name="password" required autocomplete="current-password" style="width: 100%;">
-                </p>
-                <button type="submit">Zaloguj</button>
-            </form>
-        </section>
-</div>
+        <p class="auth-footer">
+            Nie masz jeszcze konta?
+            <a href="/register">Zarejestruj się</a>
+        </p>
+    </section>
+</section>

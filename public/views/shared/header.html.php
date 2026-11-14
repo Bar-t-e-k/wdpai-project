@@ -20,6 +20,7 @@
                 <a href="/logout">Wyloguj</a>
             <?php else: ?>
                 <a href="/login" class="btn-primary">Zaloguj</a>
+                <a href="/register">Rejestracja</a>
             <?php endif; ?>
         </div>
     </div>

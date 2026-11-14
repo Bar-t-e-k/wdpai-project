@@ -19,6 +19,8 @@ $routing->get('/places', PlaceController::class, 'list');
 
 $routing->get('/login', AuthController::class, 'login');
 $routing->post('/login', AuthController::class, 'login');
+$routing->get('/register', AuthController::class, 'register');
+$routing->post('/register', AuthController::class, 'register');
 $routing->get('/logout', AuthController::class, 'logout');
 $routing->get('/places/add', PlaceController::class, 'add');
 $routing->post('/places/add', PlaceController::class, 'add');

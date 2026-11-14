@@ -12,7 +12,7 @@ final class AuthController extends AppController
     public function login(): void
     {
         if ($this->isAuthenticated()) {
-            $this->redirect('/places/add');
+            $this->redirect('/');
         }
 
         $error = null;
@@ -21,21 +21,73 @@ final class AuthController extends AppController
             $email = trim((string) ($_POST['email'] ?? ''));
             $password = (string) ($_POST['password'] ?? '');
 
-            if (
-                hash_equals(self::TEST_EMAIL, $email)
-                && hash_equals(self::TEST_PASSWORD, $password)
+            $registeredUsers = $_SESSION['registered_users'] ?? [];
+            $storedPassword = is_array($registeredUsers[$email] ?? null)
+                ? (string) $registeredUsers[$email]['password']
+                : null;
+
+            if ($email === '' && $password === '') {
+                $error = null;
+            } elseif (
+                (hash_equals(self::TEST_EMAIL, $email)
+                    && hash_equals(self::TEST_PASSWORD, $password))
+                || ($storedPassword !== null && password_verify($password, $storedPassword))
             ) {
                 session_regenerate_id(true);
                 $_SESSION['authenticated'] = true;
-                $this->redirect('/places/add');
+                $this->redirect('/');
+            } else {
+                $error = 'Nieprawidłowy adres e-mail lub hasło.';
             }
-
-            $error = 'Nieprawidłowy adres e-mail lub hasło.';
         }
 
         $this->render('login', [
             'pageTitle' => 'Logowanie — Radar Ciszy',
             'error' => $error,
+        ]);
+    }
+
+    public function register(): void
+    {
+        if ($this->isAuthenticated()) {
+            $this->redirect('/');
+        }
+
+        $error = null;
+        $email = '';
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = trim((string) ($_POST['email'] ?? ''));
+            $password = (string) ($_POST['password'] ?? '');
+            $passwordConfirmation = (string) ($_POST['password_confirmation'] ?? '');
+            $registeredUsers = $_SESSION['registered_users'] ?? [];
+
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $error = 'Podaj poprawny adres e-mail.';
+            }
+            // Walidacja długości hasła jest tymczasowo wyłączona dla testów.
+            // elseif (strlen($password) < 6) {
+            //    $error = 'Hasło musi mieć co najmniej 6 znaków.';
+            // }
+            elseif ($password !== $passwordConfirmation) {
+                $error = 'Hasła muszą być identyczne.';
+            } elseif (isset($registeredUsers[$email])) {
+                $error = 'Konto z tym adresem e-mail już istnieje.';
+            } else {
+                $registeredUsers[$email] = [
+                    'password' => password_hash($password, PASSWORD_DEFAULT),
+                ];
+                $_SESSION['registered_users'] = $registeredUsers;
+                session_regenerate_id(true);
+                $_SESSION['authenticated'] = true;
+                $this->redirect('/');
+            }
+        }
+
+        $this->render('register', [
+            'pageTitle' => 'Rejestracja - Radar Ciszy',
+            'error' => $error,
+            'email' => $email,
         ]);
     }
 
