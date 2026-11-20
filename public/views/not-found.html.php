@@ -1,5 +1,5 @@
 <div class="page">
-    <section class="project-card" style="text-align: center; margin-top: var(--space-4);">
+    <section class="project-card not-found-card">
         <h1>404</h1>
         <p>Taka strona nie istnieje.</p>
         <a href="/">Wróć na stronę główną</a>

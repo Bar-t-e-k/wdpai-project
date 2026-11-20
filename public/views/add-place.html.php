@@ -14,12 +14,12 @@
             <form action="/places/add" method="POST">
                 <p>
                     <label for="name">Nazwa azylu:</label><br>
-                    <input type="text" id="name" name="name" required placeholder="np. Zakątek w Ogrodzie Botanicznym" style="width: 100%;">
+                    <input class="form-control-full" type="text" id="name" name="name" required placeholder="np. Zakątek w Ogrodzie Botanicznym">
                 </p>
 
                 <p>
                     <label for="category">Kategoria:</label><br>
-                    <select id="category" name="category" required style="width: 100%;">
+                    <select class="form-control-full" id="category" name="category" required>
                         <option value="park">Park / Skwer</option>
                         <option value="kawiarnia">Kawiarnia</option>
                         <option value="biblioteka">Biblioteka / Czytelnia</option>
@@ -29,7 +29,7 @@
 
                 <p>
                     <label for="description">Opis właściwości sensorycznych:</label><br>
-                    <textarea id="description" name="description" rows="4" placeholder="Opisz oświetlenie, poziom hałasu, obecność tłumu..." style="width: 100%;"></textarea>
+                    <textarea class="form-control-full" id="description" name="description" rows="4" placeholder="Opisz oświetlenie, poziom hałasu, obecność tłumu..."></textarea>
                 </p>
 
                 <button type="submit">Zapisz zgłoszenie</button>

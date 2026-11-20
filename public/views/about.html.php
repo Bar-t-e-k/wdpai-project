@@ -1,23 +1,23 @@
 <div class="page">
-    <section class="project-card" style="max-width: 800px; margin: var(--space-4) auto;">
+    <section class="project-card about-card">
             <h1>O projekcie Radar Ciszy</h1>
-            <p style="font-size: 1.1rem; color: var(--color-muted); margin-bottom: var(--space-3);">
+            <p class="about-intro">
                 Radar Ciszy to inicjatywa mająca na celu mapowanie oaz spokoju w zgiełku współczesnych miast. 
                 Wierzymy, że dostęp do ciszy jest fundamentalnym prawem każdego mieszkańca, wpływającym na zdrowie psychiczne i kreatywność.
             </p>
 
-            <div style="display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-block: var(--space-4);">
+            <div class="about-grid">
                 <article>
-                    <h3 style="color: var(--color-brand);">Nasza Misja</h3>
-                    <p style="color: var(--color-muted);">Dostarczanie precyzyjnych danych o natężeniu dźwięku w miejscach publicznych, abyś mógł znaleźć idealne miejsce do pracy, nauki lub odpoczynku.</p>
+                    <h3 class="about-mission">Nasza Misja</h3>
+                    <p>Dostarczanie precyzyjnych danych o natężeniu dźwięku w miejscach publicznych, abyś mógł znaleźć idealne miejsce do pracy, nauki lub odpoczynku.</p>
                 </article>
                 <article>
-                    <h3 style="color: var(--color-cyan);">Technologia</h3>
-                    <p style="color: var(--color-muted);">Wykorzystujemy pomiary w czasie rzeczywistym oraz dane od społeczności, tworząc unikalny indeks sensoryczny dla każdej lokalizacji.</p>
+                    <h3 class="about-tech">Technologia</h3>
+                    <p>Wykorzystujemy pomiary w czasie rzeczywistym oraz dane od społeczności, tworząc unikalny indeks sensoryczny dla każdej lokalizacji.</p>
                 </article>
             </div>
 
-            <hr style="border: 0; border-top: 1px solid var(--color-border); margin-block: var(--space-3);">
+            <hr class="about-divider">
 
             <h2>Standard Sensoryczny PK</h2>
             <p>
@@ -25,7 +25,7 @@
                 zgodnie z wytycznymi Standardu Sensorycznego Politechniki Krakowskiej.
             </p>
 
-            <div style="margin-top: var(--space-4);">
+            <div class="about-action">
                 <a href="/" class="btn-primary">Wróć do mapy</a>
             </div>
     </section>

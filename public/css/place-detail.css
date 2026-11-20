@@ -152,6 +152,12 @@
   background: linear-gradient(180deg, var(--color-brand), var(--color-cyan));
 }
 
+.noise-height-20 { height: 20%; }
+.noise-height-30 { height: 30%; }
+.noise-height-40 { height: 40%; }
+.noise-height-50 { height: 50%; }
+.noise-height-60 { height: 60%; }
+
 .noise-chart__column small {
   height: 1.25rem;
   color: var(--color-muted);
