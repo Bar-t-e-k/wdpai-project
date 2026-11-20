@@ -5,6 +5,8 @@ declare(strict_types=1);
 use App\Controller\DefaultController;
 use App\Controller\AuthController;
 use App\Controller\PlaceController;
+use App\Controller\CommunityController;
+use App\Controller\ModerationController;
 use App\Routing;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
@@ -16,6 +18,8 @@ $routing = new Routing();
 $routing->get('/', DefaultController::class, 'index');
 $routing->get('/about', DefaultController::class, 'about');
 $routing->get('/places', PlaceController::class, 'list');
+$routing->get('/community', CommunityController::class, 'index');
+$routing->get('/moderation', ModerationController::class, 'index');
 
 $routing->get('/login', AuthController::class, 'login');
 $routing->post('/login', AuthController::class, 'login');

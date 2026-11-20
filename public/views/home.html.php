@@ -1,75 +1,65 @@
-<div class="page dashboard-grid">
+<div class="dashboard">
+    <div class="system-pulse" aria-label="Stan systemu akustycznego">
+        <div class="system-pulse__status">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <strong>Radar Ciszy</strong>
+            <span>Monitor akustyczny aktywny</span>
+        </div>
+        <div class="system-pulse__metrics">
+            <span><strong>14</strong> aktywnych stref</span>
+            <span><strong>42.4 dB</strong> średnia miejska</span>
+            <button class="system-pulse__action" type="button">+ Zarejestruj pomiar</button>
+        </div>
+    </div>
 
-        <section class="map-view" id="map-container">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div class="map-badge">
-                    <span>📍 Warszawa — Powiśle & Śródmieście</span>
-                </div>
-                <div class="map-badge">
-                    <span style="color: var(--color-brand);">LIVE MONITOR AKUSTYCZNY</span>
-                </div>
-            </div>
-
-            <div id="osm-map-placeholder" style="text-align: center; margin-block: auto;">
-                <p style="color: var(--color-muted); font-size: 1.1rem;">[ Interaktywna Mapa Radar Ciszy — OpenStreetMap / Leaflet ]</p>
-                <span class="tag">35 dB Czysta cisza</span>
-                <span class="tag tag-cyan">36-45 dB Oaza</span>
-            </div>
-
-            <div class="map-badge" style="width: 100%; justify-content: space-between;">
-                <span>Średnia w rejonie: <strong>42.4 dB</strong></span>
-                <span style="color: var(--color-brand);">-18% normy miejskiej</span>
+    <div class="dashboard-grid">
+        <section class="map-view" id="map-container" aria-label="Mapa cichych miejsc">
+            <div class="map-canvas" data-current-layer="azyl">
+                <span class="map-canvas__title">Mapa</span>
             </div>
         </section>
 
-        <aside class="sidebar-panel">
-            <div class="project-card" style="display: flex; justify-content: space-between; align-items: center;">
+        <aside class="sidebar-panel" aria-label="Wyniki dla Warszawy">
+            <header class="result-header">
                 <div>
-                    <h2 style="font-size: 1.1rem; margin: 0;">Znaleziono azyle w Śródmieściu</h2>
-                    <p style="color: var(--color-muted); font-size: 0.85rem; margin: 0;">Skupisko: Powiśle, Warszawa</p>
+                    <h2>Znaleziono azyle w Śródmieściu</h2>
+                    <p>Skupisko: Powiśle, Warszawa</p>
                 </div>
-                <a href="/places" class="tag tag-cyan">Filtruj</a>
-            </div>
+                <a href="/places" class="filter-link">Filtruj</a>
+            </header>
 
-            <article class="project-card">
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                    <span class="tag">39 dB avg • Oaza Ciszy</span>
-                    <small style="color: var(--color-muted);">Otwarty do 20:00</small>
+            <article class="place-card place-card--featured">
+                <div class="place-card__head">
+                    <span class="tag">39 dB · Oaza Ciszy</span>
+                    <small>Otwarty do 20:00</small>
                 </div>
                 <h3>Ogród BUW — Dziedziniec Różany</h3>
-                <p style="color: var(--color-muted); font-size: 0.9rem;">Relaks • Nauka • Warszawa Powiśle, ul. Dobra 56</p>
-                
-                <dl style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem; margin-block: 1rem;">
-                    <div>
-                        <dt style="color: var(--color-muted);">Szum fontanny:</dt>
-                        <dd style="margin: 0; font-weight: 600;">Tak (28 dB)</dd>
-                    </div>
-                    <div>
-                        <dt style="color: var(--color-muted);">Cień / Światło:</dt>
-                        <dd style="margin: 0; font-weight: 600;">85% Cienia</dd>
-                    </div>
+                <p class="place-card__meta">Relaks · Nauka · Powiśle</p>
+                <dl class="place-card__metrics">
+                    <div><dt>Szum fontanny</dt><dd>Tak · 28 dB</dd></div>
+                    <div><dt>Cień / światło</dt><dd>85% cienia</dd></div>
                 </dl>
-
-                <footer style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-                    <a href="/places/1" class="btn-primary" style="font-size: 0.85rem; padding: 0.4rem 1rem;">Nawiguj Cichą trasą</a>
-                    <a href="/places/1" style="font-size: 0.85rem;">Szczegóły &rarr;</a>
+                <footer class="place-card__footer">
+                    <a href="/places/1" class="btn-primary">Nawiguj cichą trasą</a>
+                    <a href="/places/1">Szczegóły →</a>
                 </footer>
             </article>
 
-            <article class="project-card">
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                    <span class="tag tag-cyan">33 dB • Ultra-cicho</span>
+            <article class="place-card">
+                <div class="place-card__head">
+                    <span class="tag tag-cyan">33 dB · Ultra-cicho</span>
                 </div>
                 <h3>Czytelnia Główna Biblioteki Rolniczej</h3>
-                <p style="color: var(--color-muted); font-size: 0.9rem;">Praca Głęboka • Krakowskie Przedmieście</p>
-                <p style="font-size: 0.85rem;">Zajętość miejsc: <strong>35%</strong> | Ergonomiczne fotele, pętla indukcyjna</p>
-                <a href="/places/2" style="font-size: 0.85rem;">Zobacz indeks sensoryczny &rarr;</a>
+                <p class="place-card__meta">Praca głęboka · Krakowskie Przedmieście</p>
+                <p class="place-card__occupancy">Zajętość miejsc: <strong>35%</strong></p>
+                <a href="/places/2" class="place-card__details">Zobacz indeks sensoryczny →</a>
             </article>
 
-            <article class="project-card" style="border-style: dashed; text-align: center;">
+            <article class="place-card place-card--contribute">
                 <h3>Znasz ukrytą oazę ciszy?</h3>
-                <p style="color: var(--color-muted); font-size: 0.85rem;">Pomóż innym odnaleźć spokój w mieście. Dodaj nowy pomiar.</p>
-                <a href="/places/add" class="btn-primary" style="margin-top: 0.5rem;">+ Zarejestruj Nowy Obiekt</a>
+                <p>Pomóż innym odnaleźć spokój w mieście.</p>
+                <a href="/places/add" class="btn-primary">+ Zarejestruj nowy obiekt</a>
             </article>
         </aside>
+    </div>
 </div>

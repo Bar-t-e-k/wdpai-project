@@ -1,54 +1,104 @@
-<div class="page">
-        <h1><?= htmlspecialchars($pageTitle) ?></h1>
-        <section style="margin-bottom: var(--space-3);">
-            <h2>Filtruj przestrzenie</h2>
-            <form action="/places" method="GET">
-                <fieldset class="actions">
-                    <legend>Kryteria sensoryczne</legend>
-                    
-                    <label for="category">Kategoria:</label>
-                    <select id="category" name="category">
-                        <option value="">Wszystkie</option>
-                        <option value="park">Parki i Natura</option>
-                        <option value="cafe">Ciche Kawiarnie</option>
-                        <option value="library">Biblioteki i Uczelnie</option>
-                    </select>
+<div class="places-page">
+    <header class="places-heading">
+        <div>
+            <span class="places-eyebrow">Wyszukiwarka i porównywarka</span>
+            <h1><?= htmlspecialchars($pageTitle) ?></h1>
+        </div>
+        <a class="btn-primary" href="/places/add">+ Zarejestruj pomiar</a>
+    </header>
 
-                    <label for="max-noise">Maksymalny hałas (dB):</label>
-                    <input type="range" id="max-noise" name="max_noise" min="20" max="60" value="40">
+    <form class="places-search" action="/places" method="GET">
+        <label class="places-search__query" for="search">
+            <span>Szukaj miejsca</span>
+            <input
+                type="search"
+                id="search"
+                name="search"
+                value="<?= htmlspecialchars($search) ?>"
+                placeholder="Nazwa, dzielnica lub kategoria"
+            >
+        </label>
 
-                    <button type="submit">Zastosuj filtry</button>
-                </fieldset>
-            </form>
-        </section>
+        <label for="category">
+            <span>Kategoria</span>
+            <select id="category" name="category">
+                <option value="" <?= $category === '' ? 'selected' : '' ?>>Wszystkie</option>
+                <option value="park" <?= $category === 'park' ? 'selected' : '' ?>>Parki i natura</option>
+                <option value="cafe" <?= $category === 'cafe' ? 'selected' : '' ?>>Ciche kawiarnie</option>
+                <option value="library" <?= $category === 'library' ? 'selected' : '' ?>>Biblioteki i uczelnie</option>
+            </select>
+        </label>
 
-        <section>
-            <h2>Odnalezione strefy wyciszenia</h2>
+        <label for="max-noise">
+            <span>Maksymalny hałas</span>
+            <div class="places-search__range">
+                <input type="range" id="max-noise" name="max_noise" min="20" max="60" value="<?= (int)$maxNoise ?>">
+                <output for="max-noise"><?= (int)$maxNoise ?> dB</output>
+            </div>
+        </label>
 
-            <div class="projects">
+        <button class="btn-primary places-search__submit" type="submit">Zastosuj filtry</button>
+    </form>
+
+    <section class="places-results" aria-label="Odnalezione strefy wyciszenia">
+        <header class="places-results__header">
+            <div>
+                <h2>Odnalezione strefy</h2>
+                <p><?= count($placesList) ?> miejsc dopasowanych do kryteriów</p>
+            </div>
+            <div class="places-view-toggle" aria-label="Tryb widoku">
+                <span class="active" aria-current="page">Lista</span>
+            </div>
+        </header>
+
+        <div class="places-layout">
+            <div class="places-list">
                 <?php foreach ($placesList as $place): ?>
-                    <article class="project-card">
-                        <header>
+                    <article class="place-result">
+                        <div class="place-result__main">
+                            <div class="place-result__head">
+                                <span class="tag <?= (int)$place['noiseDb'] <= 30 ? 'tag-cyan' : '' ?>">
+                                    <?= (int)$place['noiseDb'] ?> dB
+                                </span>
+                                <span class="place-result__category"><?= htmlspecialchars($place['category']) ?></span>
+                            </div>
                             <h3><?= htmlspecialchars($place['name']) ?></h3>
-                            <p><small><?= htmlspecialchars($place['category']) ?></small></p>
-                        </header>
-                        
-                        <dl>
-                            <dt>Poziom hałasu:</dt>
-                            <dd><strong><?= htmlspecialchars($place['noise']) ?></strong></dd>
-                            
-                            <dt>Światło:</dt>
-                            <dd><?= htmlspecialchars($place['light']) ?></dd>
-                            
-                            <dt>Zagęszczenie ludzi:</dt>
-                            <dd><?= htmlspecialchars($place['crowd']) ?></dd>
-                        </dl>
+                            <p><?= htmlspecialchars($place['location']) ?></p>
 
-                        <footer>
-                            <a href="/places/<?= (int)$place['id'] ?>">Zobacz historię pomiarów i szczegóły</a>
+                            <dl class="place-result__metrics">
+                                <div>
+                                    <dt>Światło</dt>
+                                    <dd><?= htmlspecialchars($place['light']) ?></dd>
+                                </div>
+                                <div>
+                                    <dt>Zagęszczenie</dt>
+                                    <dd><?= htmlspecialchars($place['crowd']) ?></dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <footer class="place-result__footer">
+                            <label>
+                                <input type="checkbox" name="compare_place[]" value="<?= (int)$place['id'] ?>">
+                                Dodaj do porównania
+                            </label>
+                            <a href="/places/<?= (int)$place['id'] ?>">Zobacz szczegóły →</a>
                         </footer>
                     </article>
                 <?php endforeach; ?>
+
+                <?php if ($placesList === []): ?>
+                    <p class="places-empty">Nie znaleziono miejsc spełniających wybrane kryteria.</p>
+                <?php endif; ?>
             </div>
-        </section>
+
+            <aside class="places-compare" aria-label="Porównywarka miejsc">
+                <div class="places-compare__heading">
+                    <h2>Porównanie</h2>
+                    <span>0 miejsc</span>
+                </div>
+                <p>Dodaj co najmniej dwa miejsca, aby porównać ich parametry sensoryczne.</p>
+            </aside>
+        </div>
+    </section>
 </div>
