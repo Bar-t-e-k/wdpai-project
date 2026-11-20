@@ -17,6 +17,7 @@
 
         <div class="header-actions">
             <?php if (($_SESSION['authenticated'] ?? false) === true): ?>
+                <a class="header-actions__link <?= ($activePage ?? '') === 'moderation' ? 'active' : '' ?>" href="/moderation">Moderacja</a>
                 <a href="/places/add" class="btn-primary header-actions__primary">+ Zarejestruj obiekt</a>
                 <a class="header-actions__link" href="/logout">Wyloguj</a>
             <?php else: ?>
