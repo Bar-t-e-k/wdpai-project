@@ -60,9 +60,11 @@
                 <div class="noise-chart" aria-label="Wykres natężenia hałasu">
                     <?php foreach ($noiseHistory as $index => $value): ?>
                         <div class="noise-chart__column">
+                            <?php
+                            $noiseHeightClass = 'noise-height-' . max(20, min(60, (int)(ceil($value / 10) * 10)));
+                            ?>
                             <span
-                                class="noise-chart__bar"
-                                style="height: <?= max(12, min(100, (int)$value * 1.35)) ?>%"
+                                class="noise-chart__bar <?= $noiseHeightClass ?>"
                                 title="<?= (int)$value ?> dB"
                             ></span>
                             <?php if ($index % 2 === 0): ?>

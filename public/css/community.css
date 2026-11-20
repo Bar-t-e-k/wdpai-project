@@ -1,0 +1,248 @@
+.community-page {
+  width: min(100% - 2rem, 90rem);
+  margin-inline: auto;
+  padding-block: var(--space-4);
+}
+
+.community-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.community-heading h1 {
+  margin: 0.25rem 0 0.35rem;
+}
+
+.community-heading p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.community-eyebrow {
+  color: var(--color-brand);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.community-search {
+  display: grid;
+  grid-template-columns: auto minmax(12rem, 1fr) auto;
+  align-items: end;
+  gap: 0.65rem;
+  margin-bottom: var(--space-3);
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.community-search label {
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.community-search input {
+  min-height: 2.75rem;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-background);
+  color: var(--color-text);
+  font: inherit;
+  padding: 0.65rem 0.75rem;
+}
+
+.community-layout {
+  display: grid;
+  grid-template-columns: 14rem minmax(0, 1fr) 18rem;
+  align-items: start;
+  gap: var(--space-2);
+}
+
+.community-categories,
+.community-knowledge,
+.community-post {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.community-categories,
+.community-knowledge {
+  padding: var(--space-2);
+}
+
+.community-categories h2,
+.community-knowledge h2,
+.community-feed__header h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.community-categories nav {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+}
+
+.community-categories nav a {
+  display: flex;
+  min-height: 2.4rem;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  padding: 0.45rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.community-categories nav a.active,
+.community-categories nav a:hover {
+  background: var(--color-brand-subtle);
+  color: var(--color-brand);
+}
+
+.community-categories nav span {
+  color: inherit;
+  font-size: 0.68rem;
+}
+
+.community-tip {
+  border: 1px solid var(--color-brand-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-brand-subtle);
+  margin-top: var(--space-2);
+  padding: 0.75rem;
+  font-size: 0.78rem;
+}
+
+.community-tip p {
+  margin: 0.35rem 0 0;
+  color: var(--color-muted);
+}
+
+.community-feed {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.community-feed__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1);
+  padding: 0.25rem 0 0.75rem;
+}
+
+.community-feed__header p {
+  margin: 0.15rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.community-feed__header > span {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.community-post {
+  padding: var(--space-2);
+}
+
+.community-post--featured {
+  border-color: var(--color-brand-border);
+}
+
+.community-post header,
+.community-post footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.community-post header time {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.community-post h3 {
+  margin: 0.75rem 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.community-post p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.community-post footer {
+  justify-content: flex-start;
+  border-top: 1px solid var(--color-border);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.community-knowledge {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.community-knowledge > a {
+  display: grid;
+  gap: 0.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-background);
+  padding: 0.75rem;
+}
+
+.community-knowledge > a span {
+  color: var(--color-brand);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.community-knowledge > a strong {
+  color: var(--color-text);
+  font-size: 0.82rem;
+}
+
+.community-knowledge > a small {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.community-stat {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-brand-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-brand-subtle);
+  padding: 0.85rem;
+  text-align: center;
+}
+
+.community-stat strong {
+  color: var(--color-brand);
+  font-size: 1.8rem;
+}
+
+.community-stat span {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+

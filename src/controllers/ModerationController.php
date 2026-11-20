@@ -8,7 +8,7 @@ final class ModerationController extends AppController
 {
     public function index(): void
     {
-        $this->requireAuthentication();
+        $this->requireModerator();
 
         $this->render('moderation', [
             'pageTitle' => 'Centrum weryfikacji i moderacji',

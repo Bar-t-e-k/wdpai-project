@@ -8,6 +8,8 @@ final class AuthController extends AppController
 {
     private const TEST_EMAIL = '123@123.com';
     private const TEST_PASSWORD = '123';
+    private const MODERATOR_EMAIL = 'moderator@radarciszy.pl';
+    private const MODERATOR_PASSWORD = 'moderator123';
 
     public function login(): void
     {
@@ -31,10 +33,16 @@ final class AuthController extends AppController
             } elseif (
                 (hash_equals(self::TEST_EMAIL, $email)
                     && hash_equals(self::TEST_PASSWORD, $password))
+                || (hash_equals(self::MODERATOR_EMAIL, $email)
+                    && hash_equals(self::MODERATOR_PASSWORD, $password))
                 || ($storedPassword !== null && password_verify($password, $storedPassword))
             ) {
                 session_regenerate_id(true);
                 $_SESSION['authenticated'] = true;
+                $_SESSION['role'] = hash_equals(self::TEST_EMAIL, $email)
+                    || hash_equals(self::MODERATOR_EMAIL, $email)
+                        ? 'moderator'
+                        : (string)($registeredUsers[$email]['role'] ?? 'user');
                 $this->redirect('/');
             } else {
                 $error = 'Nieprawidłowy adres e-mail lub hasło.';
@@ -76,10 +84,12 @@ final class AuthController extends AppController
             } else {
                 $registeredUsers[$email] = [
                     'password' => password_hash($password, PASSWORD_DEFAULT),
+                    'role' => 'user',
                 ];
                 $_SESSION['registered_users'] = $registeredUsers;
                 session_regenerate_id(true);
                 $_SESSION['authenticated'] = true;
+                $_SESSION['role'] = 'user';
                 $this->redirect('/');
             }
         }

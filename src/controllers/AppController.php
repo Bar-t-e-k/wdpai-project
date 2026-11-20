@@ -20,6 +20,31 @@ abstract class AppController
         $this->redirect('/login');
     }
 
+    protected function getUserRole(): string
+    {
+        $role = (string)($_SESSION['role'] ?? 'user');
+
+        return in_array($role, ['user', 'moderator', 'admin'], true)
+            ? $role
+            : 'user';
+    }
+
+    protected function requireModerator(): void
+    {
+        $this->requireAuthentication();
+
+        if (in_array($this->getUserRole(), ['moderator', 'admin'], true)) {
+            return;
+        }
+
+        http_response_code(403);
+        $this->render('not-found', [
+            'pageTitle' => 'Brak uprawnień',
+            'activePage' => 'moderation',
+        ]);
+        exit;
+    }
+
     protected function redirect(string $location): never
     {
         header('Location: ' . $location);
