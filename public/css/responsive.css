@@ -1,0 +1,145 @@
+@media (max-width: 75rem) {
+  .places-search {
+    grid-template-columns: 1.5fr 0.7fr 0.9fr;
+  }
+
+  .places-search__submit {
+    grid-column: 3;
+  }
+
+  .places-layout {
+    align-items: stretch;
+  }
+
+  .places-compare {
+    flex-basis: 16rem;
+  }
+
+  .community-layout {
+    grid-template-columns: 12rem minmax(0, 1fr);
+  }
+
+  .community-knowledge {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .community-knowledge h2,
+  .community-stat {
+    grid-column: 1 / -1;
+  }
+
+  .moderation-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .moderation-layout {
+    grid-template-columns: minmax(0, 1.7fr) minmax(14rem, 0.55fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+  }
+
+  .system-pulse__metrics span {
+    display: none;
+  }
+}
+
+@media (max-width: 60rem) {
+  .places-search {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .places-search__submit {
+    grid-column: auto;
+  }
+
+  .places-layout {
+    flex-direction: column;
+  }
+
+  .places-compare {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .place-detail-heading,
+  .place-detail-actions {
+    align-items: stretch;
+  }
+
+  .place-detail-heading {
+    flex-direction: column;
+  }
+
+  .place-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .place-detail-summary {
+    position: static;
+  }
+
+  .community-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .community-search {
+    grid-template-columns: 1fr;
+  }
+
+  .community-search label {
+    min-height: auto;
+  }
+
+  .community-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .community-categories nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .community-knowledge {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .moderation-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .moderation-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .moderation-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .moderation-sidebar {
+    position: static;
+  }
+
+  .moderation-item footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .moderation-item footer div {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .system-pulse {
+    align-items: flex-start;
+  }
+}
+
