@@ -1,5 +1,5 @@
 <section class="page auth-page">
-    <section class="auth-card project-card">
+    <section class="auth-card surface-card">
         <header class="auth-heading">
             <span class="auth-eyebrow">Dołącz do społeczności</span>
             <h1>Załóż konto</h1>

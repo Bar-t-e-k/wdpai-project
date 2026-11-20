@@ -1,6 +1,6 @@
 <div class="page hero">
         <h1>Zgłoś nową strefę / Przeprowadź pomiar live</h1>
-        <section class="project-card">
+        <section class="surface-card">
             <h2>Pomiar hałasu otoczenia (Web Audio API)</h2>
             <p>Dopuszczalna prosta norma dla cichej strefy: <strong><?= (int)$maxAllowedNoise ?> dB</strong></p>
             
@@ -9,7 +9,7 @@
             <output id="noise-value">Kliknij przycisk, aby rozpocząć pomiar...</output>
         </section>
 
-        <section class="project-card">
+        <section class="surface-card">
             <h2>Formularz dodawania mikrolokalizacji</h2>
             <form action="/places/add" method="POST">
                 <p>

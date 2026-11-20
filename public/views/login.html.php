@@ -1,5 +1,5 @@
 <section class="page auth-page">
-    <section class="auth-card project-card">
+    <section class="auth-card surface-card">
         <header class="auth-heading">
             <span class="auth-eyebrow">Witaj ponownie</span>
             <h1>Logowanie</h1>

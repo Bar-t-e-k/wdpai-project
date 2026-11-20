@@ -1,5 +1,5 @@
 <div class="page">
-    <section class="project-card about-card">
+    <section class="surface-card about-card">
             <h1>O projekcie Radar Ciszy</h1>
             <p class="about-intro">
                 Radar Ciszy to inicjatywa mająca na celu mapowanie oaz spokoju w zgiełku współczesnych miast. 
