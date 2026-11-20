@@ -23,31 +23,68 @@ final class PlaceController extends AppController
                 'id' => 1,
                 'name' => 'Parkowa Altana Wyciszenia',
                 'category' => 'Park / Plener',
-                'noise' => '28 dB',
+                'categoryKey' => 'park',
+                'noiseDb' => 28,
                 'light' => 'Miękkie naturalne',
                 'crowd' => 'Niski (1-3 osoby)',
+                'location' => 'Powiśle, Warszawa',
             ],
             [
                 'id' => 2,
                 'name' => 'Kawiarnia Czytelnia – Strefa Cicha',
                 'category' => 'Kawiarnia',
-                'noise' => '42 dB',
+                'categoryKey' => 'cafe',
+                'noiseDb' => 42,
                 'light' => 'Ciepłe, przyciemnione',
                 'crowd' => 'Średni',
+                'location' => 'Śródmieście, Warszawa',
             ],
             [
                 'id' => 3,
                 'name' => 'Mediateka – Czytelnia Sensoryczna',
                 'category' => 'Biblioteka',
-                'noise' => '22 dB',
+                'categoryKey' => 'library',
+                'noiseDb' => 22,
                 'light' => 'Regulowane punktowe',
                 'crowd' => 'Bardzo niski',
+                'location' => 'Krakowskie Przedmieście, Warszawa',
             ],
         ];
 
+        $search = trim((string)($_GET['search'] ?? ''));
+        $category = (string)($_GET['category'] ?? '');
+        $maxNoise = (int)($_GET['max_noise'] ?? 60);
+        $maxNoise = max(20, min(60, $maxNoise));
+
+        $filteredPlaces = array_values(array_filter(
+            $places,
+            static function (array $place) use ($search, $category, $maxNoise): bool {
+                if ($place['noiseDb'] > $maxNoise) {
+                    return false;
+                }
+
+                if ($category !== '' && $place['categoryKey'] !== $category) {
+                    return false;
+                }
+
+                if ($search === '') {
+                    return true;
+                }
+
+                $searchableText = strtolower(
+                    implode(' ', [$place['name'], $place['category'], $place['location']])
+                );
+
+                return str_contains($searchableText, strtolower($search));
+            }
+        ));
+
         $this->render('places', [
             'pageTitle' => 'Katalog Cichych Stref',
-            'placesList' => $places,
+            'placesList' => $filteredPlaces,
+            'search' => $search,
+            'category' => $category,
+            'maxNoise' => $maxNoise,
             'activePage' => 'places',
         ]);
     }
