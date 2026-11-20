@@ -6,16 +6,6 @@ namespace App\Controller;
 
 final class PlaceController extends AppController
 {
-    public function index(): void
-    {
-        $this->render('home', [
-            'pageTitle' => 'Cichy Azyl – Mapa Przestrzeni Sensorycznych',
-            'activeZonesCount' => 14,
-            'avgCityNoise' => '38 dB (Spokojnie)',
-            'activePage' => 'home',
-        ]);
-    }
-
     public function list(): void
     {
         $places = [
