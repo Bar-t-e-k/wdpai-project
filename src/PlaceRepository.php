@@ -77,12 +77,22 @@ final class PlaceRepository
 
     public function all(): array
     {
-        return array_values($this->places);
+        return array_merge(array_values($this->places), $this->allSubmitted());
     }
 
     public function find(int $id): ?array
     {
-        return $this->places[$id] ?? null;
+        if (isset($this->places[$id])) {
+            return $this->places[$id];
+        }
+
+        foreach ($this->allSubmitted() as $place) {
+            if ($place['id'] === $id) {
+                return $place;
+            }
+        }
+
+        return null;
     }
 
     public function filter(string $search, string $category, int $maxNoise): array
@@ -90,7 +100,7 @@ final class PlaceRepository
         $search = strtolower(trim($search));
 
         return array_values(array_filter(
-            $this->places,
+            $this->all(),
             static function (array $place) use ($search, $category, $maxNoise): bool {
                 if ($place['noiseDb'] > $maxNoise) {
                     return false;
@@ -111,5 +121,43 @@ final class PlaceRepository
                 return str_contains($searchableText, $search);
             }
         ));
+    }
+
+    public function add(array $place): int
+    {
+        $submitted = [
+            'id' => 0,
+            'name' => $place['name'],
+            'category' => $place['category'],
+            'categoryKey' => $place['categoryKey'],
+            'noiseDb' => $place['noiseDb'],
+            'noiseLevel' => $place['noiseDb'],
+            'light' => $place['light'],
+            'crowd' => $place['crowd'],
+            'location' => $place['location'],
+            'sensoryScore' => 'Nowe',
+            'lastUpdated' => 'Dodano przed chwilą',
+            'scent' => 'Niepodano',
+            'quietHours' => 'Do weryfikacji',
+            'noiseHistory' => [$place['noiseDb']],
+            'review' => [
+                'author' => 'Nowe zgłoszenie społeczności',
+                'date' => date('Y-m-d'),
+                'datetime' => date('Y-m-d'),
+                'text' => $place['description'],
+            ],
+        ];
+
+        $stored = $_SESSION['submitted_places'] ?? [];
+        $submitted['id'] = 100 + count($stored);
+        $stored[] = $submitted;
+        $_SESSION['submitted_places'] = $stored;
+
+        return $submitted['id'];
+    }
+
+    public function allSubmitted(): array
+    {
+        return $_SESSION['submitted_places'] ?? [];
     }
 }

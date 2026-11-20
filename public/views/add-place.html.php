@@ -12,24 +12,34 @@
         <section class="surface-card">
             <h2>Formularz dodawania mikrolokalizacji</h2>
             <form action="/places/add" method="POST">
+                <?php if ($error !== null): ?>
+                    <p class="form-error" role="alert"><?= htmlspecialchars($error) ?></p>
+                <?php endif; ?>
+
                 <p>
                     <label for="name">Nazwa azylu:</label><br>
-                    <input class="form-control-full" type="text" id="name" name="name" required placeholder="np. Zakątek w Ogrodzie Botanicznym">
+                    <input class="form-control-full" type="text" id="name" name="name" required value="<?= htmlspecialchars($submitted['name']) ?>" placeholder="np. Zakątek w Ogrodzie Botanicznym">
                 </p>
 
                 <p>
                     <label for="category">Kategoria:</label><br>
                     <select class="form-control-full" id="category" name="category" required>
-                        <option value="park">Park / Skwer</option>
-                        <option value="kawiarnia">Kawiarnia</option>
-                        <option value="biblioteka">Biblioteka / Czytelnia</option>
-                        <option value="inne">Inne miejsce</option>
+                        <option value="">Wybierz kategorię</option>
+                        <option value="park" <?= $submitted['category'] === 'park' ? 'selected' : '' ?>>Park / Skwer</option>
+                        <option value="kawiarnia" <?= $submitted['category'] === 'kawiarnia' ? 'selected' : '' ?>>Cicha kawiarnia</option>
+                        <option value="biblioteka" <?= $submitted['category'] === 'biblioteka' ? 'selected' : '' ?>>Biblioteka / Czytelnia</option>
+                        <option value="inne" <?= $submitted['category'] === 'inne' ? 'selected' : '' ?>>Inne miejsce</option>
                     </select>
                 </p>
 
                 <p>
+                    <label for="noise-db">Poziom hałasu (dB):</label><br>
+                    <input class="form-control-full" type="number" id="noise-db" name="noise_db" min="20" max="100" required value="<?= (int)($_POST['noise_db'] ?? 35) ?>">
+                </p>
+
+                <p>
                     <label for="description">Opis właściwości sensorycznych:</label><br>
-                    <textarea class="form-control-full" id="description" name="description" rows="4" placeholder="Opisz oświetlenie, poziom hałasu, obecność tłumu..."></textarea>
+                    <textarea class="form-control-full" id="description" name="description" rows="4" placeholder="Opisz oświetlenie, poziom hałasu, obecność tłumu..."><?= htmlspecialchars($submitted['description']) ?></textarea>
                 </p>
 
                 <button type="submit">Zapisz zgłoszenie</button>

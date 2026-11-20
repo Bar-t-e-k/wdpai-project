@@ -69,9 +69,57 @@ final class PlaceController extends AppController
     {
         $this->requireAuthentication();
 
+        $error = null;
+        $submitted = [
+            'name' => '',
+            'category' => '',
+            'description' => '',
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $submitted = [
+                'name' => trim((string)($_POST['name'] ?? '')),
+                'category' => (string)($_POST['category'] ?? ''),
+                'description' => trim((string)($_POST['description'] ?? '')),
+            ];
+            $noiseDb = (int)($_POST['noise_db'] ?? 0);
+
+            $allowedCategories = [
+                'park' => 'Park / Skwer',
+                'kawiarnia' => 'Cicha kawiarnia',
+                'biblioteka' => 'Biblioteka / Czytelnia',
+                'inne' => 'Inne miejsce',
+            ];
+
+            if ($submitted['name'] === '') {
+                $error = 'Podaj nazwę miejsca.';
+            } elseif (!isset($allowedCategories[$submitted['category']])) {
+                $error = 'Wybierz poprawną kategorię.';
+            } elseif ($noiseDb < 20 || $noiseDb > 100) {
+                $error = 'Podaj poziom hałasu z zakresu 20–100 dB.';
+            } else {
+                $placeId = $this->places->add([
+                    'name' => $submitted['name'],
+                    'category' => $allowedCategories[$submitted['category']],
+                    'categoryKey' => $submitted['category'],
+                    'noiseDb' => $noiseDb,
+                    'light' => 'Do weryfikacji',
+                    'crowd' => 'Do weryfikacji',
+                    'location' => 'Warszawa',
+                    'description' => $submitted['description'] !== ''
+                        ? $submitted['description']
+                        : 'Brak dodatkowego opisu.',
+                ]);
+
+                $this->redirect('/places/' . $placeId);
+            }
+        }
+
         $this->render('add-place', [
             'pageTitle' => 'Dodaj Nowy Azyl / Zmierz Hałas',
             'maxAllowedNoise' => 55,
+            'error' => $error,
+            'submitted' => $submitted,
             'activePage' => 'add-place',
         ]);
     }
