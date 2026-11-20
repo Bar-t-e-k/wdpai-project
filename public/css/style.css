@@ -75,6 +75,16 @@ body {
   background-color: var(--color-background);
 }
 
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+}
+
 a {
   color: var(--color-brand);
   text-decoration: none;
@@ -111,14 +121,28 @@ header.site-header .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2);
-  padding-block: 0.75rem;
+  min-height: 4.5rem;
+  gap: var(--space-3);
+  padding-block: 0.65rem;
 }
 
 .logo-group {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  flex: 0 0 auto;
+  gap: 0.65rem;
+  color: var(--color-text);
+}
+
+.logo-mark {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-brand-border);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, var(--color-brand) 0 18%, transparent 19%),
+    radial-gradient(circle at center, transparent 20%, var(--color-brand) 21% 26%, transparent 27%),
+    radial-gradient(circle at center, transparent 43%, var(--color-brand-border) 44% 48%, transparent 49%);
 }
 
 .logo-title {
@@ -128,20 +152,55 @@ header.site-header .header-inner {
   margin: 0;
 }
 
-nav ul {
+.main-nav {
+  flex: 1 1 auto;
+}
+
+.main-nav__list {
   display: flex;
+  align-items: center;
+  justify-content: center;
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: var(--space-3);
+  gap: clamp(0.75rem, 2vw, var(--space-3));
   font-size: 0.9rem;
 }
 
-nav a {
+.main-nav__link {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
   color: var(--color-muted);
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
 }
 
-nav a.active, nav a:hover {
+.main-nav__link.active,
+.main-nav__link:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-brand);
+}
+
+.header-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.9rem;
+}
+
+.header-actions__primary {
+  white-space: nowrap;
+}
+
+.header-actions__link {
+  color: var(--color-muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.header-actions__link:hover {
   color: var(--color-text);
 }
 
@@ -161,6 +220,45 @@ nav a.active, nav a:hover {
 
 .btn-primary:hover {
   background-color: var(--color-brand-hover);
+}
+
+.app-footer {
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.app-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+}
+
+.app-footer__inner p {
+  margin: 0;
+}
+
+@media (max-width: 64rem) {
+  header.site-header .header-inner {
+    flex-wrap: wrap;
+  }
+
+  .main-nav {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .main-nav__list {
+    justify-content: flex-start;
+  }
+
+  .app-footer__inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
 }
 
 .dashboard-grid {

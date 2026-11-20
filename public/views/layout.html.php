@@ -30,6 +30,7 @@
     <script src="/js/theme.js" defer></script>
 </head>
 <body>
+    <div class="app-shell">
     <button
         class="theme-toggle"
         type="button"
@@ -41,13 +42,16 @@
     </button>
     <?php include __DIR__ . '/shared/header.html.php'; ?>
 
-    <main>
+    <main class="app-main">
         <?= $content ?>
     </main>
 
-    <footer class="page" style="border-top: 1px solid var(--color-border); margin-top: var(--space-4); padding-top: var(--space-2); color: var(--color-muted); font-size: 0.85rem; display: flex; justify-content: space-between;">
-        <p>&copy; 2026 Radar Ciszy — Cyfrowa mapa ukojenia i azyl akustycznych.</p>
-        <p>Karta Dobrego Wyciszenia | Standard Sensoryczny PK</p>
+    <footer class="app-footer">
+        <div class="page app-footer__inner">
+            <p>&copy; 2026 Radar Ciszy — Cyfrowa mapa ukojenia i azyl akustycznych.</p>
+            <p>Karta Dobrego Wyciszenia | Standard Sensoryczny PK</p>
+        </div>
     </footer>
+    </div>
 </body>
 </html>

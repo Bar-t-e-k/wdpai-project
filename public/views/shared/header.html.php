@@ -1,26 +1,26 @@
 <header class="site-header">
     <div class="page header-inner">
-        <div class="logo-group">
-            <span style="color: var(--color-brand); font-size: 1.4rem;">📡</span>
-            <h1 class="logo-title">Radar Ciszy</h1>
-        </div>
+        <a class="logo-group" href="/" aria-label="Radar Ciszy — strona główna">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span class="logo-title">Radar Ciszy</span>
+        </a>
 
-        <nav>
-            <ul>
-                <li><a href="/" class="<?= ($activePage ?? '') === 'home' ? 'active' : '' ?>">Eksploruj</a></li>
-                <li><a href="/places" class="<?= ($activePage ?? '') === 'places' ? 'active' : '' ?>">Korytarze Ciszy</a></li>
-                <li><a href="/about" class="<?= ($activePage ?? '') === 'about' ? 'active' : '' ?>">O projekcie</a></li>
-                <li><a href="/places/add" class="<?= ($activePage ?? '') === 'add-place' ? 'active' : '' ?>">Decybelomierz Live</a></li>
+        <nav class="main-nav" aria-label="Główna nawigacja">
+            <ul class="main-nav__list">
+                <li><a class="main-nav__link <?= ($activePage ?? '') === 'home' ? 'active' : '' ?>" href="/">Eksploruj</a></li>
+                <li><a class="main-nav__link <?= ($activePage ?? '') === 'places' ? 'active' : '' ?>" href="/places">Korytarze Ciszy</a></li>
+                <li><a class="main-nav__link <?= ($activePage ?? '') === 'about' ? 'active' : '' ?>" href="/about">O projekcie</a></li>
+                <li><a class="main-nav__link <?= ($activePage ?? '') === 'add-place' ? 'active' : '' ?>" href="/places/add">Decybelomierz Live</a></li>
             </ul>
         </nav>
 
-        <div style="display: flex; align-items: center; gap: var(--space-2);">
+        <div class="header-actions">
             <?php if (($_SESSION['authenticated'] ?? false) === true): ?>
-                <a href="/places/add" class="btn-primary">+ Zarejestruj Nowy Obiekt</a>
-                <a href="/logout">Wyloguj</a>
+                <a href="/places/add" class="btn-primary header-actions__primary">+ Zarejestruj obiekt</a>
+                <a class="header-actions__link" href="/logout">Wyloguj</a>
             <?php else: ?>
-                <a href="/login" class="btn-primary">Zaloguj</a>
-                <a href="/register">Rejestracja</a>
+                <a href="/login" class="btn-primary header-actions__primary">Zaloguj</a>
+                <a class="header-actions__link" href="/register">Rejestracja</a>
             <?php endif; ?>
         </div>
     </div>

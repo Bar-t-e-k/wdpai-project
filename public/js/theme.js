@@ -1,6 +1,6 @@
 const storageKey = 'theme';
 const themeToggle = document.querySelector('.theme-toggle');
-const themeIcon = themeToggle?.querySelector('i') ?? null;
+const themeIcon = themeToggle?.querySelector('.theme-toggle__icon') ?? null;
 const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 function getCurrentTheme() {
@@ -38,8 +38,9 @@ function syncThemeToggle() {
         isDark ? 'Włącz jasny motyw' : 'Włącz ciemny motyw'
     );
 
-    themeIcon?.classList.toggle('fa-sun', isDark);
-    themeIcon?.classList.toggle('fa-moon', !isDark);
+    if (themeIcon) {
+        themeIcon.textContent = isDark ? '☀' : '☾';
+    }
 }
 
 function setTheme(theme, remember = true) {
