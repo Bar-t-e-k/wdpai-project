@@ -9,6 +9,7 @@
             <ul class="main-nav__list">
                 <li><a class="main-nav__link <?= ($activePage ?? '') === 'home' ? 'active' : '' ?>" href="/">Eksploruj</a></li>
                 <li><a class="main-nav__link <?= ($activePage ?? '') === 'places' ? 'active' : '' ?>" href="/places">Korytarze Ciszy</a></li>
+                <li><a class="main-nav__link <?= ($activePage ?? '') === 'community' ? 'active' : '' ?>" href="/community">Społeczność</a></li>
                 <li><a class="main-nav__link <?= ($activePage ?? '') === 'about' ? 'active' : '' ?>" href="/about">O projekcie</a></li>
                 <li><a class="main-nav__link <?= ($activePage ?? '') === 'add-place' ? 'active' : '' ?>" href="/places/add">Decybelomierz Live</a></li>
             </ul>
